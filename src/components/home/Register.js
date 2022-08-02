@@ -27,8 +27,8 @@ class Register extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-     handleChange(event) {
-        const { name, value } = event.target;
+     handleChange(e) {
+        const { name, value } = e.target;
         const { user } = this.state;
         this.setState({
             user: {
@@ -39,18 +39,19 @@ class Register extends React.Component {
     }
 
      handleSubmit(event) {
-        event.preventDefault();
         console.log("In submit");
+       event.preventDefault();
+        
         // const { user } = this.state
 
         let checkValid = ValidateRegister(user);
-        if (checkValid.firstNameError === '' && checkValid.lastNameError === '' && checkValid.emailError === '' && checkValid.passwordError === '') {
-            checkValid = false;
-        }
-        else {
-            checkValid = true;
-        }
-        console.log("Validating errors", checkValid);
+        // if (checkValid.firstNameError === '' && checkValid.lastNameError === '' && checkValid.emailError === '' && checkValid.passwordError === '') {
+        //     checkValid = false;
+        // }
+        // else {
+        //     checkValid = true;
+        // }
+        // console.log("Validating errors", checkValid);
         if (checkValid) {
             this.props.registerUser();
         }
@@ -58,39 +59,39 @@ class Register extends React.Component {
 
     render() {
         let { user, error } = this.state;
-           error = ValidateRegister(user);
+        //    error = ValidateRegister(user);
         //  console.log(error)
 
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Create Account</h2>
-                <form  name="form">
+                <form  name="form" onSubmit={this.handleSubmit}>
                     <div className="forms">
                         <label htmlFor="firstName">First Name<sup>*</sup></label>
-                        <input type="text" className="form-control" name="firstName" placeholder="Enter your first name" value={user.firstName} onChange={() => handleChange()} />
+                        <input type="text" className="form-control" name="firstName" placeholder="Enter your first name" value={user.firstName} onChange={this.handleChange} />
                         <p>{error.firstNameError}</p>
 
                     </div>
                     <div className="forms">
                         <label htmlFor="lastName">Last Name<sup>*</sup></label>
-                        <input type="text" className="form-control" name="lastName" placeholder="Enter your last name" value={user.lastName} onChange={() => handleChange()} />
+                        <input type="text" className="form-control" name="lastName" placeholder="Enter your last name" value={user.lastName} onChange={this.handleChange} />
                         <p>{error.lastNameError}</p>
 
                     </div>
                     <div className="forms">
                         <label htmlFor="email">Email<sup>*</sup></label>
-                        <input type="text" className="form-control" name="email" placeholder="Enter your email id" value={user.email} onChange={() => handleChange()} />
+                        <input type="text" className="form-control" name="email" placeholder="Enter your email id" value={user.email} onChange={this.handleChange} />
                         <p>{error.emailError}</p>
 
                     </div>
                     <div className="forms">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" placeholder="Enter your password" value={user.password} onChange={() => handleChange()} />
+                        <input type="password" className="form-control" name="password" placeholder="Enter your password" value={user.password} onChange={this.handleChange} />
                         <p>{error.passwordError}</p>
 
                     </div>
                     <div className="form-group">
-                        <button to="" className="btn btn-primary" onClick={() => handleSubmit()} >Register</button>
+                        <button to="" className="btn btn-primary" type='submit' >Register</button>
                         
                         {/* <Link to = "/login" className = "btn btn-link">Login</Link> */}
                     </div>

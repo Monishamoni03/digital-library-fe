@@ -14,8 +14,6 @@ module.exports = {
         open: true,
         historyApiFallback: true,
         liveReload: false,
-        hotOnly: false,
-       inline: true,
     },
     resolve: {
         extensions: [".js",".css",".jsx",".json",".jpg",".png",".jpeg"]
@@ -36,6 +34,15 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            // // for images 
+            {
+                test: /\.(jpg|png)$/,
+                use: 
+                    {
+                        loader: 'file-loader',
+                    }
+                
             },
         ]
     }

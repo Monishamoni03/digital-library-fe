@@ -3,10 +3,11 @@
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     text-align: center;
     margin: 7px 50px 7px 5%;/*To create space for overall homepage body*/
 }
+
 .about-para
 {
     text-align: left;
@@ -16,6 +17,7 @@
     padding-bottom: 20px;
 
 }
+
 .section-header {
     font-family: "Algeria";
     padding: 5px;/*To increase space around heading*/
@@ -30,6 +32,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .about-section-header {
     font-family: "Algeria";
     padding: 10px;/*To increase space around heading*/
