@@ -4,4 +4,8 @@
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime"
     ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 99a67aba2204c0d9163ef08b4bf9eecccc8a129a
