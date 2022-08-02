@@ -65,6 +65,15 @@ export const userLoggedIn = (loginCredential) => {
   }
 }
 
+//Set User logging
+export const setLoggedIn = () => ({
+  type: types.SET_LOGIN
+})
+
+export const setLoggedOut = () => ({
+  type: types.SET_LOGOUT
+})
+
 
 export const loadUsers = () => {
     return function (dispatch) {

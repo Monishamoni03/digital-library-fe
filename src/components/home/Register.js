@@ -91,9 +91,7 @@ class Register extends React.Component {
 
                     </div>
                     <div className="form-group">
-                        <button to="" className="btn btn-primary" type='submit' >Register</button>
-                        
-                        {/* <Link to = "/login" className = "btn btn-link">Login</Link> */}
+                        <button className = "btn btn-primary" type='submit'>Register</button>
                     </div>
                 </form>
             </div>

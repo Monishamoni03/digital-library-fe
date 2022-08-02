@@ -1,3 +1,6 @@
+export const SET_LOGIN = "SET_LOGIN"
+export const SET_LOGOUT = "SET_LOGOUT"
+
 export const GET_USERS = "GET_USERS";
 export const ADD_USER = "ADD_USER";
 export const DELETE_USER = "DELETE_USER";

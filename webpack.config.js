@@ -9,14 +9,16 @@ module.exports = {
     },
     target: "web",
     devServer: {
-        port: "9500",
+        port: "3500",
         contentBase: ["./public"],
         open: true,
         historyApiFallback: true,
         liveReload: false,
+        watchContentBase: false,
+        hot: false
     },
     resolve: {
-        extensions: [".js",".css",".jsx",".json",".jpg",".png",".jpeg"]
+        extensions: ["*",".js",".css",".jsx",".json",".jpg",".png",".jpeg"]
     },
     module: {
         rules: [
