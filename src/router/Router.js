@@ -6,6 +6,8 @@ import Contact from '../components/home/Contact';
 import NewLogin from '.././components/home/NewLogin';
 import Register from '.././components/home/Register';
 import NavBar from '../components/shared/NavBar';
+import Admin from "../components/admin/Admin";
+import AddBook from "../components/admin/AddBook";
 
 class Router extends Component {
     render() {
@@ -18,6 +20,8 @@ class Router extends Component {
                     <Route exact path="/contact" element={<Contact />} />
                     <Route exact path="/login" element={<NewLogin />} />
                     <Route exact path="/register" element={<Register />} /> 
+                    <Route exact path="/admin" element = {<Admin />} />
+                    <Route exact path="/addbooks" element = {<AddBook />} />
                 </Routes>
             </div>
         )

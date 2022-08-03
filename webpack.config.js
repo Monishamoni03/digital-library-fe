@@ -14,8 +14,6 @@ module.exports = {
         open: true,
         historyApiFallback: true,
         liveReload: false,
-        watchContentBase: false,
-        hot: false
     },
     resolve: {
         extensions: ["*",".js",".css",".jsx",".json",".jpg",".png",".jpeg"]

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../../assets/css/Contact.css'; 
-// import contact from "../assets/images/contactUs.jpg";
+import contact from '../../assets/images/contactUs.jpg';
 import Footer from "../shared/Footer";
 
 class Contact extends Component {
@@ -10,10 +10,10 @@ class Contact extends Component {
             {/* <NavBar /> */}
             <section className = "contact-section cnt">
             <h1 className = "heading">CONTACT US</h1>
-            {/* <img src = {contact} alt = "contactUs" className = "contact-image"></img> */}
+            <img src = {contact} alt = "contactUs" className = "contact-image"></img>
             
             <form className = "forms">
-                <h3>GET IN TOUCH</h3>
+                <h3>GET IN TOUCH</h3> 
                 <label>Name</label>
                 <input type = "text" name = "name" />
 

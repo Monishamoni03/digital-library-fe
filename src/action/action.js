@@ -24,6 +24,23 @@ const getUser = (user) => ({
   payload: user,
 });
 
+const bookAdded = () => ({
+  type: types.ADD_BOOK,
+});
+
+const bookUpdated = () => ({
+  type: types.UPDATE_BOOK,
+});
+
+const bookDeleted = () => ({
+  type: types.DELETE_BOOK,
+});
+
+const getBook = (book) => ({
+  type: types.GET_SINGLE_BOOK,
+  payload: book,
+});
+
 const getSuccessMessage = (message) => ({
   type: types.GET_SUCCESS_MESSAGE,
   payload: message
@@ -74,7 +91,77 @@ export const setLoggedOut = () => ({
   type: types.SET_LOGOUT
 })
 
+//view profile
+export const viewProfile = (userId) => {
+  return function (dispatch) {
+      axiosInstance.get(`users/profile/${userId}`)
+          .then((res) => {
+              dispatch(getUser(res.data))
+              dispatch(loadUsers())
+          })
+          .catch((error) => {
+              console.log("View profile Error : " + error)
+          })
+  }
+}
 
+//update/edit Profile
+export const updateProfile = (user, userId) => {
+  return function (dispatch) {
+      axiosInstance.put(`users/${userId}`, user)
+          .then(() => {
+              dispatch(userUpdated());
+              dispatch(loadUsers())
+          })
+          .catch((error) => {
+              console.log("User update Error : ", error)
+          })
+  }
+}
+
+//add books
+export const addBook = (book) => {
+  return function (dispatch) {
+      axiosInstance
+          .post(`/books/`, book)
+          .then((resp) => {
+              console.log("resp", resp);
+              dispatch(bookAdded());
+              dispatch(loadBooks());
+          })
+          .catch((error) => console.log(error));
+  };
+};
+
+//Update book
+export const updateBook = (book, userId) => {
+  return function (dispatch) {
+      axiosInstance
+          .put(`/books/${userId}`, book)
+          .then((resp) => {
+              console.log("resp", resp);
+              dispatch(bookUpdated());
+              dispatch(loadBooks());
+          })
+          .catch((error) => console.log(error));
+  };
+};
+
+//Delete book
+export const deleteBook = (userId) => {
+  return function (dispatch) {
+      axiosInstance
+          .delete(`/books/${userId}`)
+          .then((resp) => {
+              console.log("resp", resp);
+              dispatch(bookDeleted());
+              dispatch(loadBooks());
+          })
+          .catch((error) => console.log(error));
+  };
+};
+
+//load all users
 export const loadUsers = () => {
     return function (dispatch) {
         axios
@@ -89,10 +176,40 @@ export const loadUsers = () => {
     };
 }
 
-export const deleteUser = (id) => {
+//load all books
+export const loadBooks = (category) => {
+
+  console.log("LOADING BOOKS : ", category)
+
+  if (category === undefined) {
+      return function (dispatch) {
+          axiosInstance.get(`/books`)
+              .then((res) => {
+                  console.log("resp", res.data);
+                  dispatch(getBook(res.data));
+              })
+              .catch((error) => {
+                  console.log("Book error : ", error)
+              })
+      };
+  } else {
+      return function (dispatch) {
+          axiosInstance.get(`/books?category=${category}`)
+              .then((res) => {
+                  dispatch(getBook(res.data))
+              })
+              .catch((error) => {
+                  console.log("Book Error : ", error)
+              })
+      }
+  }
+};
+
+
+export const deleteUser = (userId) => {
   return function (dispatch) {
       axios
-      .delete(`${process.env.REACT_APP_API}/${id}`)
+      .delete(`/users/${userId}`)
       .then((resp) => {
           console.log("resp", resp)
           dispatch(userDeleted());

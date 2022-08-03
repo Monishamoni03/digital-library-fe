@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setLoggedIn, userLoggedIn } from '../../action/action'
 import ValidateLogin from '../../shared/utils/ValidateLogin';
 
@@ -52,13 +51,13 @@ function NewLogin() {
         }
     }, [successmessage, errormessage])
 
-    const handleSubmit = e => {
+    function handleSubmit(e){
         e.preventDefault();
 
         console.log('in handlesubmit', validate())
 
         const isValid = validate();
-
+ 
         if (isValid) {
             dispatch(userLoggedIn({ email: email, password: password }))
             if (errormessage) {
