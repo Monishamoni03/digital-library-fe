@@ -3,7 +3,7 @@ import { Routes, Route} from 'react-router-dom';
 import Home from '.././components/home/Home';
 import About from '.././components/home/About';
 import Contact from '../components/home/Contact';
-import NewLogin from '.././components/home/NewLogin';
+import Log from '.././components/home/Log';
 import Register from '.././components/home/Register';
 import NavBar from '../components/shared/NavBar';
 import Admin from "../components/admin/Admin";
@@ -18,7 +18,7 @@ class Router extends Component {
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/about" element={<About />} />
                     <Route exact path="/contact" element={<Contact />} />
-                    <Route exact path="/login" element={<NewLogin />} />
+                    <Route exact path="/login" element={<Log />} />
                     <Route exact path="/register" element={<Register />} /> 
                     <Route exact path="/admin" element = {<Admin />} />
                     <Route exact path="/addbooks" element = {<AddBook />} />
